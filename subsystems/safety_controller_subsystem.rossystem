@@ -1,0 +1,46 @@
+safety_controller_subsystem:
+  nodes:
+    safety_controller:
+      from: "cob_safety_controller.safety_controller"
+      namespace: "safety_controller"
+      parameters:
+        - host: "safety_controller::host"
+          value:"10.4.25.99"
+        - port:"safety_controller::port"
+          value: "'9100'"
+        - odometry_timeout:"safety_controller::odometry_timeout"
+          value: 1.0
+        - threshold_linear_slow:"safety_controller::threshold_linear_slow"
+          value: 0.4
+        -threshold_linear_fast:"safety_controller::threshold_linear_fast"
+          value: 0.9
+        -threshold_angular_fast:"safety_controller::threshold_linear_fast"
+          value: 1.0
+        -marker_type: "safety_controller::marker_type"
+          value: 11 # http://www.ros.org/wiki/rviz/DisplayTypes/Marker, not all are supported
+        -scale_x: "safety_controller::scale_x"
+          value: 1.0
+        -scale_y: "safety_controller::scale_y"
+          value: 1.0
+        -scale_z: "safety_controller::scale_z"
+          value: 1.0
+        -has_wireless_emstop:  "safety_controller::has_wireless_emstop"
+          value: false
+        -warn_for_laser_bridged: "safety_controller::warn_for_laser_bridged"
+          value: false
+        -warn_for_wireless_bridged: "safety_controller::warn_for_wireless_bridged"
+          value: false
+        -reconnect_attempts:"safety_controller::reconnect_attempts"
+          value: 5
+        -reconnect_duration: "safety_controller::reconnect_duration"
+          value: 5.0
+        -footprint_angular_slow: "safety_controller::footprint_angular_slow"
+          value: [[0.4,0.4], [-0.4,0.4], [-0.4,-0.4], [0.4,-0.4]]
+        -footprint_angular_fast: "safety_controller::footprint_angular_fast"
+          value: [[0.5,0.5], [-0.5,0.5], [-0.5,-0.5], [0.5,-0.5]]
+        -footprint_linear_slow: "safety_controller::footprint_linear_slow"
+          value: [[0.6,0.4], [-0.4,0.4], [-0.4,-0.4], [0.6,-0.4]]
+        -footprint_linear_fast: "safety_controller::footprint_linear_fast"
+          value: [[0.8,0.4], [-0.4,0.4], [-0.4,-0.4], [0.8,-0.4]]
+
+      

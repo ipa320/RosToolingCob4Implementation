@@ -1,0 +1,78 @@
+cob_safety_controller:
+  artifacts:
+    safety_controller:
+      node: safety_controller
+      publishers:
+        footprint:
+          type: "geometry_msgs/msg/Polygon"
+        marker:
+          type: 'visualization_msgs/msg/MarkerArray'
+        footprint_stamped:
+          type: 'geometry_msgs/msg/PolygonStamped'
+        diagnostics:
+          type: 'diagnostic_msgs/msg/DiagnosticArray'
+        emergency_stop_state:
+          type: 'cob_msgs/msg/EmergencyStopState'
+      serviceservers:
+        set_mode:
+          type: 'cob_srvs/srv/SetInt'
+      subscribers:
+        '/base/odometry_controller/odometry':
+          type: "nav_msgs/msg/Odometry"
+      parameters:
+        host:
+          type: String
+        port:
+          type: String
+          default: "'9100'"
+        odometry_timeout:
+          type: Double
+          default: 1.0
+        threshold_linear_slow:
+          type: Double
+          default: 0.4
+        threshold_linear_fast:
+          type: Double
+          default: 0.9
+        threshold_angular_fast:
+          type: Double
+          default: 1.0
+        marker_type: 
+          type: Integer
+          default: 11 # http://www.ros.org/wiki/rviz/DisplayTypes/Marker, not all are supported
+        scale_x: 
+          type: Double
+          default: 1.0
+        scale_y: 
+          type: Double
+          default: 1.0
+        scale_z: 
+          type: Double
+          default: 1.0
+        footprint_angular_slow:
+          type: Array[Array[Double]]
+          default: [[0.4,0.4], [-0.4,0.4], [-0.4,-0.4], [0.4,-0.4]]
+        footprint_angular_fast:
+          type: Array[Array[Double]]
+          default: [[0.5,0.5], [-0.5,0.5], [-0.5,-0.5], [0.5,-0.5]]
+        footprint_linear_slow:
+          type: Array[Array[Double]]
+          default: [[0.6,0.4], [-0.4,0.4], [-0.4,-0.4], [0.6,-0.4]]
+        footprint_linear_fast:
+          type: Array[Array[Double]]
+          default: [[0.8,0.4], [-0.4,0.4], [-0.4,-0.4], [0.8,-0.4]]
+        has_wireless_emstop: 
+          type: Boolean
+          default: false
+        warn_for_laser_bridged: 
+          type: Boolean
+          default: false
+        warn_for_wireless_bridged: 
+          type: Boolean
+          default: false
+        reconnect_attempts: 
+          type: Integer
+          default: 5
+        reconnect_duration: 
+          type: Double
+          default: 5.0

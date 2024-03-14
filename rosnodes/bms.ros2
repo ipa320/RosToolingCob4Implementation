@@ -1,0 +1,25 @@
+cob_bms_driver:
+   artifacts:
+     bms_driver_node:
+       node: bms_driver_node
+       publishers:
+         '/bms/battery_full':
+           type: 'std_msgs/msg/Bool'
+         '/bms/temperature':
+           type: 'std_msgs/msg/Float64'
+         '/bms/battery_almost_empty':
+           type: 'std_msgs/msg/Bool'
+         '/bms/battery_charging':
+           type: 'std_msgs/msg/Bool'
+         '/bms/voltage':
+           type: 'std_msgs/msg/Float64'
+         '/bms/current':
+           type: 'std_msgs/msg/Float64'
+         '/bms/remaining_capacity':
+           type: 'std_msgs/msg/Float64'
+         '/bms/full_charge_capacity':
+           type: 'std_msgs/msg/Float64'
+         '/diagnostics':
+           type: 'diagnostic_msgs/msg/DiagnosticArray'
+         '/bms/battery_learning':
+           type: 'std_msgs/msg/Bool'
